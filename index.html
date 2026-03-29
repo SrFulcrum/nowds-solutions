@@ -640,6 +640,28 @@
         height: 42px;
       }
     }
+  
+    .case-logo-wrap {
+      display: grid;
+      place-items: center;
+      text-align: center;
+    }
+
+    .case-logo {
+      width: min(100%, 560px);
+      height: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 16px 35px rgba(0,0,0,0.22));
+    }
+
+    .case-note {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.6;
+      max-width: 520px;
+    }
+
   </style>
 </head>
 <body>
@@ -657,6 +679,7 @@
         <a href="#servicos">Serviços</a>
         <a href="#processo">Processo</a>
         <a href="#diferenciais">Diferenciais</a>
+        <a href="#cases">Cases</a>
         <a href="#contato">Contato</a>
       </nav>
     </div>
@@ -868,6 +891,40 @@
       </div>
     </section>
 
+
+    <section class="section" id="cases">
+      <div class="container">
+        <div class="section-title reveal">
+          <span class="pill">Case em destaque</span>
+          <h2>Farmácia Comunitária</h2>
+          <p>
+            Um exemplo prático de aplicação dos serviços da <strong>Nowds Solutions</strong> em um cliente atendido atualmente,
+            demonstrando como presença digital, estrutura web e soluções técnicas podem ser aplicadas em cenário real.
+          </p>
+        </div>
+
+        <div class="two-col">
+          <div class="highlight reveal case-logo-wrap">
+            <img class="case-logo" src="farmacia-comunitaria-case-logo.png" alt="Logo da Farmácia Comunitária" />
+            <p class="case-note">
+              FARMACIA COMUNITARIA | BRASÍLIA | DISTRITO FEDERAL
+            </p>
+          </div>
+
+          <div class="card reveal">
+            <h3>Serviços aplicados neste case</h3>
+            <div class="list">
+              <div class="list-item">Desenvolvimento de presença institucional na web.</div>
+              <div class="list-item">Estruturação de página profissional para fortalecer credibilidade digital.</div>
+              <div class="list-item">Aplicação prática do portfólio da Nowds Solutions em cliente real.</div>
+              <div class="list-item">Base técnica preparada para integrações, automações e evoluções futuras.</div>
+              <div class="list-item">Atuação orientada à necessidade operacional, e não apenas à estética.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="section" id="contato">
       <div class="container">
         <div class="cta reveal">
@@ -901,6 +958,7 @@
         <a href="#inicio">Início</a>
         <a href="#servicos">Serviços</a>
         <a href="#processo">Processo</a>
+        <a href="#cases">Cases</a>
         <a href="#contato">Contato</a>
       </div>
     </div>
