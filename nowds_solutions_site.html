@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nowds Solutions</title>
+  <meta name="description" content="Nowds Solutions — automação, IA, sites, integrações e soluções digitais para empresas que querem vender mais e operar melhor." />
+  <style>
+    :root {
+      --bg: #0b1020;
+      --bg-soft: #121933;
+      --card: rgba(255,255,255,0.06);
+      --card-strong: rgba(255,255,255,0.1);
+      --line: rgba(255,255,255,0.12);
+      --text: #f3f6ff;
+      --muted: #aab3d1;
+      --primary: #5eead4;
+      --primary-2: #60a5fa;
+      --accent: #22c55e;
+      --shadow: 0 20px 50px rgba(0,0,0,0.35);
+      --radius: 22px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(96,165,250,0.18), transparent 30%),
+        radial-gradient(circle at top right, rgba(94,234,212,0.15), transparent 28%),
+        linear-gradient(180deg, #08101f 0%, #0b1020 45%, #0d1326 100%);
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.04);
+      color: var(--muted);
+      font-size: 14px;
+      backdrop-filter: blur(12px);
+    }
+
+    .pill::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      box-shadow: 0 0 16px rgba(94,234,212,0.6);
+    }
+
+    .section {
+      padding: 88px 0;
+      position: relative;
+    }
+
+    .section-title {
+      max-width: 700px;
+      margin-bottom: 24px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.05;
+      margin: 18px 0 12px;
+      letter-spacing: -0.03em;
+    }
+
+    .section-title p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.02rem;
+      line-height: 1.7;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(18px);
+      background: rgba(8, 16, 31, 0.72);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      min-height: 76px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      font-size: 1.05rem;
+    }
+
+    .brand-mark {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, rgba(94,234,212,0.18), rgba(96,165,250,0.18));
+      border: 1px solid rgba(255,255,255,0.14);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .brand-mark span {
+      font-size: 1rem;
+      font-weight: 900;
+      color: #fff;
+      z-index: 1;
+    }
+
+    .brand-mark::after {
+      content: "";
+      position: absolute;
+      inset: -30%;
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      opacity: 0.35;
+      filter: blur(18px);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 20px;
+      border-radius: 16px;
+      border: 1px solid transparent;
+      font-weight: 700;
+      transition: 0.25s ease;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      color: #07111b;
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      box-shadow: 0 14px 30px rgba(96,165,250,0.22);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 35px rgba(96,165,250,0.28);
+    }
+
+    .btn-secondary {
+      color: var(--text);
+      border-color: var(--line);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.08);
+      transform: translateY(-2px);
+    }
+
+    .hero {
+      padding: 76px 0 48px;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .hero-copy h1 {
+      font-size: clamp(2.8rem, 6vw, 5.2rem);
+      line-height: 0.96;
+      letter-spacing: -0.055em;
+      margin: 18px 0;
+      max-width: 780px;
+    }
+
+    .hero-copy p {
+      margin: 0;
+      max-width: 720px;
+      color: var(--muted);
+      font-size: 1.08rem;
+      line-height: 1.8;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 34px;
+    }
+
+    .stat {
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: var(--shadow);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.55rem;
+      letter-spacing: -0.04em;
+      margin-bottom: 6px;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 0.94rem;
+      line-height: 1.4;
+    }
+
+    .showcase {
+      position: relative;
+      min-height: 580px;
+    }
+
+    .glass {
+      position: absolute;
+      border-radius: 26px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: linear-gradient(180deg, rgba(255,255,255,0.09), rgba(255,255,255,0.04));
+      backdrop-filter: blur(18px);
+      box-shadow: var(--shadow);
+    }
+
+    .panel-main {
+      inset: 54px 0 0 76px;
+      padding: 24px;
+    }
+
+    .panel-card {
+      top: 0;
+      left: 0;
+      width: 280px;
+      padding: 22px;
+    }
+
+    .panel-chat {
+      right: 0;
+      bottom: 34px;
+      width: 260px;
+      padding: 18px;
+    }
+
+    .window-bar {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .window-bar span {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.26);
+    }
+
+    .dashboard {
+      display: grid;
+      gap: 14px;
+    }
+
+    .dash-row {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 14px;
+    }
+
+    .dash-block {
+      min-height: 116px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 18px;
+    }
+
+    .dash-block h3, .mini-title {
+      margin: 0 0 8px;
+      font-size: 0.95rem;
+      color: #fff;
+    }
+
+    .dash-block p, .mini-text {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.55;
+    }
+
+    .bar-chart {
+      display: flex;
+      align-items: end;
+      gap: 10px;
+      height: 120px;
+      margin-top: 16px;
+    }
+
+    .bar-chart span {
+      flex: 1;
+      border-radius: 12px 12px 4px 4px;
+      background: linear-gradient(180deg, var(--primary), var(--primary-2));
+      opacity: 0.92;
+    }
+
+    .chat-bubble {
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.08);
+      color: var(--text);
+      line-height: 1.55;
+      font-size: 0.92rem;
+      margin-bottom: 10px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .chat-bubble.user {
+      background: linear-gradient(135deg, rgba(94,234,212,0.2), rgba(96,165,250,0.18));
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      padding: 26px;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: var(--card);
+      box-shadow: var(--shadow);
+      transition: 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      background: var(--card-strong);
+    }
+
+    .icon {
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      border-radius: 16px;
+      margin-bottom: 18px;
+      font-size: 1.25rem;
+      background: linear-gradient(135deg, rgba(94,234,212,0.18), rgba(96,165,250,0.18));
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 1.2rem;
+      letter-spacing: -0.02em;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.72;
+      font-size: 0.97rem;
+    }
+
+    .list {
+      display: grid;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .list-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .list-item::before {
+      content: "✓";
+      color: var(--primary);
+      font-weight: 800;
+      margin-top: 1px;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .steps {
+      display: grid;
+      gap: 16px;
+    }
+
+    .step {
+      display: flex;
+      gap: 16px;
+      padding: 20px;
+      border-radius: 20px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .step-number {
+      min-width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      color: #08111d;
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+    }
+
+    .step h4 {
+      margin: 0 0 8px;
+      font-size: 1rem;
+    }
+
+    .step p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .highlight {
+      padding: 30px;
+      border-radius: 28px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.04));
+      box-shadow: var(--shadow);
+      height: 100%;
+    }
+
+    .highlight h3 {
+      margin: 0 0 14px;
+      font-size: 1.7rem;
+      letter-spacing: -0.03em;
+    }
+
+    .highlight p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .chip {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: var(--text);
+      font-size: 0.92rem;
+    }
+
+    .cta {
+      padding: 34px;
+      border-radius: 30px;
+      border: 1px solid var(--line);
+      background:
+        radial-gradient(circle at top right, rgba(94,234,212,0.14), transparent 28%),
+        radial-gradient(circle at bottom left, rgba(96,165,250,0.14), transparent 28%),
+        rgba(255,255,255,0.05);
+      box-shadow: var(--shadow);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .cta h3 {
+      margin: 0 0 8px;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      letter-spacing: -0.04em;
+    }
+
+    .cta p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 680px;
+      line-height: 1.75;
+    }
+
+    footer {
+      padding: 34px 0 44px;
+      color: var(--muted);
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .footer-wrap {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 1024px) {
+      .hero-grid,
+      .two-col,
+      .grid-3,
+      .dash-row {
+        grid-template-columns: 1fr;
+      }
+
+      .showcase {
+        min-height: auto;
+        display: grid;
+        gap: 18px;
+      }
+
+      .glass {
+        position: relative;
+        inset: auto;
+        width: 100%;
+      }
+
+      .panel-main,
+      .panel-card,
+      .panel-chat {
+        width: 100%;
+      }
+
+      .hero-copy h1 {
+        max-width: 100%;
+      }
+    }
+
+    @media (max-width: 780px) {
+      .nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 14px 0;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 14px;
+      }
+
+      .hero {
+        padding-top: 42px;
+      }
+
+      .hero-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .cta {
+        padding: 26px;
+      }
+
+      .section {
+        padding: 72px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a href="#inicio" class="brand">
+        <div class="brand-mark"><span>N</span></div>
+        <div>Nowds Solutions</div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#servicos">Serviços</a>
+        <a href="#processo">Processo</a>
+        <a href="#diferenciais">Diferenciais</a>
+        <a href="#contato">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero section" id="inicio">
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <span class="pill">Tecnologia aplicada ao seu negócio</span>
+          <h1>Automação, IA e soluções digitais que ajudam sua empresa a vender mais e operar melhor.</h1>
+          <p>
+            A <strong>Nowds Solutions</strong> transforma processos manuais em fluxos inteligentes.
+            Criamos sites, landing pages, integrações, sistemas sob medida e automações com IA para
+            atendimento, captação de leads e organização operacional.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#contato">Solicitar projeto</a>
+            <a class="btn btn-secondary" href="#servicos">Ver serviços</a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat">
+              <strong>IA + Automação</strong>
+              <span>Atendimento, qualificação de leads e fluxos integrados.</span>
+            </div>
+            <div class="stat">
+              <strong>Sites que convertem</strong>
+              <span>Presença digital profissional com foco em resultado.</span>
+            </div>
+            <div class="stat">
+              <strong>Soluções reais</strong>
+              <span>Tecnologia aplicada ao dia a dia da operação.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="showcase reveal">
+          <div class="glass panel-card">
+            <div class="window-bar"><span></span><span></span><span></span></div>
+            <div class="mini-title">Atendimento automatizado</div>
+            <p class="mini-text">Fluxos com IA para WhatsApp, qualificação inicial e encaminhamento inteligente.</p>
+            <div class="list">
+              <div class="list-item">Triagem de clientes e captação de dados</div>
+              <div class="list-item">Respostas rápidas e padronizadas</div>
+              <div class="list-item">Integração com CRM, APIs e operação</div>
+            </div>
+          </div>
+
+          <div class="glass panel-main">
+            <div class="window-bar"><span></span><span></span><span></span></div>
+            <div class="dashboard">
+              <div class="dash-row">
+                <div class="dash-block">
+                  <h3>Operação mais eficiente</h3>
+                  <p>Centralização de processos, menos retrabalho e mais visibilidade para decisões.</p>
+                  <div class="bar-chart">
+                    <span style="height: 46%"></span>
+                    <span style="height: 62%"></span>
+                    <span style="height: 78%"></span>
+                    <span style="height: 92%"></span>
+                  </div>
+                </div>
+                <div class="dash-block">
+                  <h3>Presença digital</h3>
+                  <p>Sites e landing pages com estrutura moderna, foco em clareza e conversão.</p>
+                </div>
+              </div>
+              <div class="dash-block">
+                <h3>Integrações sob medida</h3>
+                <p>Conexão entre formulários, APIs, painéis, WhatsApp, bancos de dados e fluxos automatizados para o negócio funcionar com menos atrito.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="glass panel-chat">
+            <div class="chat-bubble user">Olá, quero automatizar meu atendimento e organizar meus leads.</div>
+            <div class="chat-bubble">Perfeito. Podemos estruturar captação, qualificação, encaminhamento e integração com sua operação.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="servicos">
+      <div class="container">
+        <div class="section-title reveal">
+          <span class="pill">O que a Nowds Solutions entrega</span>
+          <h2>Soluções pensadas para negócio de verdade.</h2>
+          <p>
+            O foco não é apenas “ter tecnologia”, mas fazer a tecnologia resolver gargalos, acelerar atendimento,
+            melhorar presença digital e gerar mais controle sobre a operação.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <article class="card reveal">
+            <div class="icon">🤖</div>
+            <h3>Automações com IA</h3>
+            <p>Criação de fluxos inteligentes para atendimento, qualificação de leads, respostas automáticas, roteamento para humano e organização de etapas do processo.</p>
+          </article>
+
+          <article class="card reveal">
+            <div class="icon">🌐</div>
+            <h3>Sites e landing pages</h3>
+            <p>Desenvolvimento de páginas profissionais, responsivas e com foco em credibilidade, captação de contatos e apresentação clara dos seus serviços.</p>
+          </article>
+
+          <article class="card reveal">
+            <div class="icon">🔗</div>
+            <h3>Integrações e APIs</h3>
+            <p>Conexão entre ferramentas, plataformas, formulários, WhatsApp, sistemas internos e bancos de dados para reduzir tarefas manuais.</p>
+          </article>
+
+          <article class="card reveal">
+            <div class="icon">⚙️</div>
+            <h3>Sistemas sob medida</h3>
+            <p>Painéis, processos operacionais, regras de negócio e soluções personalizadas para encaixar tecnologia na rotina da empresa.</p>
+          </article>
+
+          <article class="card reveal">
+            <div class="icon">📈</div>
+            <h3>Estrutura para vender melhor</h3>
+            <p>Organização de funis, captação, comunicação e experiência digital para transformar interesse em oportunidade real de venda.</p>
+          </article>
+
+          <article class="card reveal">
+            <div class="icon">🛠️</div>
+            <h3>Consultoria prática</h3>
+            <p>Análise de processos, identificação de gargalos e proposta de implementação objetiva, sem enrolação e com foco em execução.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="processo">
+      <div class="container two-col">
+        <div class="section-title reveal">
+          <span class="pill">Como funciona</span>
+          <h2>Processo claro, técnico e orientado a resultado.</h2>
+          <p>
+            Cada projeto é estruturado para entender a operação, atacar o problema certo e entregar uma solução utilizável no dia a dia.
+          </p>
+        </div>
+
+        <div class="steps">
+          <div class="step reveal">
+            <div class="step-number">01</div>
+            <div>
+              <h4>Diagnóstico do cenário</h4>
+              <p>Levantamento do processo atual, gargalos, ferramentas já usadas e objetivo do projeto.</p>
+            </div>
+          </div>
+
+          <div class="step reveal">
+            <div class="step-number">02</div>
+            <div>
+              <h4>Estratégia da solução</h4>
+              <p>Definição da melhor abordagem: site, fluxo automatizado, integração, sistema ou combinação entre eles.</p>
+            </div>
+          </div>
+
+          <div class="step reveal">
+            <div class="step-number">03</div>
+            <div>
+              <h4>Implementação</h4>
+              <p>Desenvolvimento da estrutura, testes, ajustes de operação e organização da experiência final.</p>
+            </div>
+          </div>
+
+          <div class="step reveal">
+            <div class="step-number">04</div>
+            <div>
+              <h4>Entrega com foco em uso real</h4>
+              <p>A solução é pensada para funcionar no fluxo da empresa, e não apenas ficar bonita no papel.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="diferenciais">
+      <div class="container two-col">
+        <div class="highlight reveal">
+          <h3>Por que escolher a Nowds Solutions?</h3>
+          <p>
+            Porque o trabalho combina visão operacional com execução técnica. Em vez de soluções genéricas,
+            a proposta é construir algo que faça sentido para a realidade do cliente, com clareza, velocidade e aplicação prática.
+          </p>
+          <div class="chips">
+            <span class="chip">Automação aplicada</span>
+            <span class="chip">Integração de processos</span>
+            <span class="chip">Foco em conversão</span>
+            <span class="chip">Execução sob medida</span>
+            <span class="chip">Tecnologia útil</span>
+          </div>
+        </div>
+
+        <div class="card reveal">
+          <h3>O que isso significa na prática</h3>
+          <div class="list">
+            <div class="list-item">Menos retrabalho e mais padronização de atendimento.</div>
+            <div class="list-item">Mais rapidez para captar, responder e encaminhar clientes.</div>
+            <div class="list-item">Mais presença digital com páginas profissionais e objetivas.</div>
+            <div class="list-item">Mais organização entre canais, dados, contatos e processos.</div>
+            <div class="list-item">Mais controle para crescer sem depender de improviso.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contato">
+      <div class="container">
+        <div class="cta reveal">
+          <div>
+            <span class="pill">Vamos tirar seu projeto do papel</span>
+            <h3>Nowds Solutions</h3>
+            <p>
+              Se você quer automatizar processos, melhorar seu atendimento, criar um site profissional
+              ou integrar sua operação com mais inteligência, a base começa aqui.
+            </p>
+          </div>
+
+          <div style="display:flex; gap:12px; flex-wrap:wrap;">
+            <a class="btn btn-primary" href="https://wa.me/5561982372401" target="_blank" rel="noopener noreferrer">Falar no WhatsApp</a>
+            <a class="btn btn-secondary" href="mailto:nowdssolutions@gmail.com">Enviar e-mail</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-wrap">
+      <div><strong>Nowds Solutions</strong> — tecnologia, automação e presença digital para empresas.</div>
+      <div class="footer-links">
+        <a href="#inicio">Início</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#processo">Processo</a>
+        <a href="#contato">Contato</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+  </script>
+</body>
+</html>
