@@ -5,14 +5,10 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="NowDS - Modern Data Stack & Data Science para Empresas. Do ETL ao Insight Automatizado.">
-  <title>NowDS - Sua Modern Data Stack Profissional</title>
+  <title>NowDS - Inteligência de Dados e Modern Data Stack</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    /* =========================================
-       ESTILOS ORIGINAIS (MANTIDOS E MELHORADOS)
-       =========================================
-    */
+    /* RESET E FONTES ORIGINAIS */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -20,335 +16,199 @@
     }
 
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
       line-height: 1.6;
       color: #333;
-      overflow-x: hidden;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    ul {
-      list-style: none;
+      background-color: #fff;
     }
 
     .container {
-      max-width: 1200px;
+      max-width: 1100px;
       margin: 0 auto;
-      padding: 0 20px;
+      padding: 0 2rem;
     }
 
-    /* Navbar */
+    /* NAVBAR ORIGINAL */
     .navbar {
-      background-color: rgba(255, 255, 255, 0.95);
-      position: fixed;
-      top: 0;
-      width: 100%;
+      background: #fff;
       height: 80px;
       display: flex;
       align-items: center;
-      z-index: 1000;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
 
-    .navbar-container {
+    .navbar .container {
       display: flex;
       justify-content: space-between;
       align-items: center;
       width: 100%;
     }
 
+    .nav-logo img {
+      height: 50px;
+    }
+
     .nav-links {
       display: flex;
-      gap: 30px;
+      list-style: none;
     }
 
-    .nav-links a {
-      font-weight: 500;
-      font-size: 1.1rem;
-      transition: color 0.3s ease;
+    .nav-links li a {
+      padding: 10px 20px;
+      text-decoration: none;
+      font-weight: 600;
+      color: #333;
+      transition: 0.3s;
     }
 
-    .nav-links a:hover {
+    .nav-links li a:hover {
       color: #0078d4;
     }
 
-    /* Botões */
+    /* HERO SECTION */
+    .hero {
+      padding: 100px 0;
+      background: #f4f7f9;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: #111;
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      color: #666;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+    }
+
     .btn {
       display: inline-block;
-      padding: 12px 24px;
-      font-weight: 600;
-      text-align: center;
+      background: #0078d4;
+      color: #fff;
+      padding: 15px 30px;
       border-radius: 5px;
-      transition: background-color 0.3s ease, transform 0.2s ease;
-      cursor: pointer;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
     }
 
     .btn:hover {
-      transform: translateY(-2px);
+      background: #005a9e;
     }
 
-    .btn-primary {
-      background-color: #0078d4;
-      color: #fff;
-    }
-
-    .btn-primary:hover {
-      background-color: #005a9e;
-    }
-
-    .btn-secondary {
-      background-color: #fff;
-      color: #0078d4;
-      border: 1px solid #0078d4;
-    }
-
-    .btn-secondary:hover {
-      background-color: #f0f8ff;
-    }
-
-    /* Hero Section */
-    .hero {
-      background: linear-gradient(135deg, #f0f8ff 0%, #ffffff 100%);
-      padding: 160px 0 100px;
-      text-align: center;
-    }
-
-    .hero-content h1 {
-      font-size: 3.5rem;
-      margin-bottom: 20px;
-      color: #111;
-      line-height: 1.2;
-    }
-
-    .hero-content p {
-      font-size: 1.4rem;
-      color: #555;
-      margin-bottom: 40px;
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .hero-btns {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-    }
-
-    /* Sections em Geral */
-    .section-padding {
-      padding: 100px 0;
+    /* SERVIÇOS (A sua seção principal) */
+    .services {
+      padding: 80px 0;
     }
 
     .section-title {
       text-align: center;
-      font-size: 2.8rem;
-      margin-bottom: 20px;
-      color: #111;
+      margin-bottom: 3rem;
     }
 
-    .section-subtitle {
-      text-align: center;
-      font-size: 1.2rem;
-      color: #666;
-      margin-bottom: 80px;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
+    .section-title h2 {
+      font-size: 2.5rem;
+      color: #222;
     }
 
-    /* Grid do Pipeline */
-    .pipeline-grid {
+    .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
     }
 
-    .pipeline-item {
-      background-color: #fff;
-      padding: 40px;
+    .service-card {
+      padding: 2rem;
+      border: 1px solid #eee;
       border-radius: 10px;
-      text-align: center;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-      transition: box-shadow 0.3s ease;
+      transition: 0.3s;
+      background: #fff;
     }
 
-    .pipeline-item:hover {
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    .service-card:hover {
+      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+      border-color: #0078d4;
     }
 
-    .pipeline-icon {
-      font-size: 3rem;
+    .service-card i {
+      font-size: 2.5rem;
       color: #0078d4;
-      margin-bottom: 20px;
+      margin-bottom: 1.5rem;
     }
 
-    .pipeline-item h3 {
+    .service-card h3 {
+      margin-bottom: 1rem;
       font-size: 1.5rem;
-      margin-bottom: 15px;
     }
 
-    /* Tech Stack Icons (Nova Seção) */
-    .tech-stack {
-      background-color: #f9f9f9;
-      text-align: center;
-      padding: 60px 0;
-    }
-    
-    .tech-icons {
-      display: flex;
-      justify-content: center;
-      gap: 50px;
-      font-size: 3rem;
-      color: #aaa;
-      flex-wrap: wrap;
-    }
-    
-    .tech-icons i {
-      transition: color 0.3s ease;
-    }
-    
-    .tech-icons i:hover {
-      color: #0078d4;
-    }
-
-    /* Footer */
+    /* FOOTER */
     .footer {
-      background-color: #111;
+      background: #222;
       color: #fff;
-      padding: 80px 0 30px;
-    }
-
-    .footer-content {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 40px;
-      margin-bottom: 50px;
-    }
-
-    .footer-section h4 {
-      font-size: 1.3rem;
-      margin-bottom: 20px;
-    }
-
-    .footer-section ul li {
-      margin-bottom: 10px;
-    }
-
-    .footer-bottom {
+      padding: 40px 0;
       text-align: center;
-      border-top: 1px solid #333;
-      padding-top: 30px;
-      color: #888;
     }
 
-    /* Responsividade */
     @media (max-width: 768px) {
-      .hero-content h1 {
-        font-size: 2.5rem;
-      }
-
-      .hero-btns {
-        flex-direction: column;
-        gap: 10px;
-      }
+      .hero h1 { font-size: 2rem; }
+      .nav-links { display: none; }
     }
   </style>
 </head>
 
 <body>
-  <header class="navbar">
-    <div class="container navbar-container">
-      <a href="#" class="nav-logo">
-        <img src="logo-nowds.png" alt="NowDS - Modern Data Stack" style="height: 50px;">
-      </a>
-      <nav class="nav-links">
-        <a href="#solucao">Solução</a>
-        <a href="#arquitetura">Arquitetura</a>
-        <a href="#pilares">Pilares</a>
-        <a href="mailto:contato@nowds.com.br" class="btn btn-secondary">Contato</a>
-      </nav>
+  <nav class="navbar">
+    <div class="container">
+      <div class="nav-logo">
+        <img src="logo-nowds.png" alt="NowDS Logo">
+      </div>
+      <ul class="nav-links">
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="mailto:contato@nowds.com.br">Contato</a></li>
+      </ul>
     </div>
-  </header>
+  </nav>
 
   <section class="hero">
-    <div class="container hero-content">
-      <h1>Sua Modern Data Stack.<br> Decisões Inteligentes.</h1>
-      <p>Do ETL ao Insight com IA: Centralize, automatize e governe seus dados sem precisar de uma grande equipe de engenharia. NowDS fornece a infraestrutura profissional que sua empresa precisa para escalar.</p>
-      <div class="hero-btns">
-        <a href="mailto:contato@nowds.com.br" class="btn btn-primary">Falar com um Especialista</a>
-        <a href="#solucao" class="btn btn-secondary">Saiba Mais</a>
-      </div>
+    <div class="container">
+      <h1>Sua Modern Data Stack. <br>Decisões Inteligentes.</h1>
+      <p>Transformamos dados brutos em ativos estratégicos através de infraestrutura moderna e inteligência artificial.</p>
+      <a href="mailto:contato@nowds.com.br" class="btn">Solicitar Orçamento</a>
     </div>
   </section>
 
-  <section id="solucao" class="section-padding">
+  <section id="servicos" class="services">
     <div class="container">
-      <h2 class="section-title">A Fundação dos Seus Dados</h2>
-      <p class="section-subtitle">Focamos na engenharia de dados profissional, para que você possa focar no que realmente importa: a análise e o crescimento.</p>
-      
-      <div class="pipeline-grid">
-        <div class="pipeline-item">
-          <i class="fas fa-satellite-dish pipeline-icon"></i>
-          <h3>Ingestão</h3>
-          <p>Conecte e extraia dados de qualquer fonte (CRMs, Bancos SQL/NoSQL, APIs) de forma automatizada e segura.</p>
-        </div>
-        <div class="pipeline-item">
-          <i class="fas fa-magic pipeline-icon"></i>
-          <h3>Transformação</h3>
-          <p>Limpe, normalize e aggregate seus dados em um ambiente governado, pronto para análise (conforme padrões dbt).</p>
-        </div>
-        <div class="pipeline-item">
-          <i class="fas fa-cloud pipeline-icon"></i>
-          <h3>Data Warehouse</h3>
-          <p>Armazene seus dados em um ambiente Cloud escalável, garantindo performance e governança de acesso.</p>
-        </div>
-        <div class="pipeline-item">
-          <i class="fas fa-robot pipeline-icon"></i>
-          <h3>Insights com IA</h3>
-          <p>Utilize modelos de IA avançados para análise preditiva e geração automatizada de relatórios gerenciais.</p>
-        </div>
+      <div class="section-title">
+        <h2>Nossos Serviços Profissionais</h2>
       </div>
-    </div>
-  </section>
-
-  <section class="tech-stack section-padding">
-    <div class="container">
-      <h3 class="section-title" style="font-size: 2rem; margin-bottom: 40px;">Ferramentas de Classe Mundial</h3>
-      <div class="tech-icons">
-        <i class="fab fa-python" title="Python"></i>
-        <i class="fas fa-database" title="SQL"></i>
-        <i class="fab fa-aws" title="AWS"></i>
-        <i class="fab fa-microsoft" title="Azure OpenAI"></i>
-        <i class="fab fa-google-cloud" title="Google Cloud BigQuery"></i>
-        <i class="fab fa-docker" title="Docker"></i>
-      </div>
-    </div>
-  </section>
-
-  <section id="pilares" class="section-padding">
-    <div class="container">
-      <h2 class="section-title">Por que NowDS?</h2>
-      <div class="pipeline-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
-        <div class="pipeline-item" style="text-align: left; padding: 25px;">
-          <h3>Automação de Pipelines</h3>
-          <p>Elimine processos manuais. Nossos pipelines são agendados e monitorados 24/7 para garantir que seus dados estejam sempre atualizados.</p>
+      <div class="services-grid">
+        <div class="service-card">
+          <i class="fas fa-database"></i>
+          <h3>Engenharia de Dados</h3>
+          <p>Implementação de pipelines (ETL/ELT) automatizados. Ingestão de dados de CRMs, ERPs e APIs para um repositório centralizado e governado.</p>
         </div>
-        <div class="pipeline-item" style="text-align: left; padding: 25px;">
-          <h3>Integração Multicloud</h3>
-          <p>Não fique preso a um fornecedor. A NowDS se integra nativamente com AWS, Azure e Google Cloud, adaptando-se à sua infraestrutura.</p>
+        <div class="service-card">
+          <i class="fas fa-chart-line"></i>
+          <h3>Business Intelligence</h3>
+          <p>Criação de dashboards estratégicos que contam a história do seu negócio. Dashboards em tempo real para monitoramento de KPIs críticos.</p>
         </div>
-        <div class="pipeline-item" style="text-align: left; padding: 25px;">
-          <h3>Governança de Dados</h3>
-          <p>Segurança em primeiro lugar. Controlamos o acesso granular aos dados, garantindo conformidade (LGPD) e rastreabilidade total.</p>
+        <div class="service-card">
+          <i class="fas fa-brain"></i>
+          <h3>IA & Analytics</h3>
+          <p>Modelagem preditiva e integração com LLMs (OpenAI/Azure) para automação de insights e análise de sentimentos dos seus clientes.</p>
         </div>
-        <div class="pipeline-item" style="text-align: left; padding: 25px;">
-          <h3>Análise Preditiva</h3>
-          <p>Olhe para o futuro. Usamos IA para identificar tendências, prever demandas e descobrir oportunidades ocultas nos seus dados brutos.</p>
+        <div class="service-card">
+          <i class="fas fa-shield-alt"></i>
+          <h3>Governança & LGPD</h3>
+          <p>Estruturação de políticas de acesso e segurança de dados, garantindo que sua empresa esteja em conformidade com as normas vigentes.</p>
         </div>
       </div>
     </div>
@@ -356,31 +216,8 @@
 
   <footer class="footer">
     <div class="container">
-      <div class="footer-content">
-        <div class="footer-section">
-          <h4>NowDS</h4>
-          <p>Sua Modern Data Stack Professional.</p>
-          <p>São Paulo, SP - Brasil.</p>
-        </div>
-        <div class="footer-section">
-          <h4>Navegação</h4>
-          <ul>
-            <li><a href="#solucao">Solução</a></li>
-            <li><a href="#arquitetura">Arquitetura</a></li>
-            <li><a href="#pilares">Pilares</a></li>
-          </ul>
-        </div>
-        <div class="footer-section">
-          <h4>Contato Profissional</h4>
-          <ul>
-            <li><i class="fas fa-envelope"></i> <a href="mailto:contato@nowds.com.br">contato@nowds.com.br</a></li>
-            <li><i class="fas fa-globe"></i> www.nowds.com.br</li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; 2023 NowDS. Todos os direitos reservados. "Decisões Inteligentes com Dados Profissionais".</p>
-      </div>
+      <p>&copy; 2026 NowDS - Inteligência de Dados Profissional</p>
+      <p><small>contato@nowds.com.br | Brasília, DF</small></p>
     </div>
   </footer>
 </body>
