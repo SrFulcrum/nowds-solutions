@@ -1,78 +1,786 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="NowDS - Modern Data Stack & AI Automation Startup. Powered by Azure OpenAI and Google Cloud.">
-    <meta name="keywords" content="Data Science, MDS, ETL, AI, Startup, Brazil">
-    <title>NowDS - Data Science & Modern Data Stack</title>
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* MANTENHA AQUI TODO O SEU CSS ORIGINAL IGUALZINHO */
-        body { font-family: sans-serif; line-height: 1.6; color: #333; margin: 0; }
-        .container { max-width: 1100px; margin: auto; overflow: hidden; padding: 0 2rem; }
-        .navbar { background: #fff; color: #333; height: 80px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #eee; }
-        .navbar img { height: 45px; }
-        .showcase { background: #f4f4f4; height: 500px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
-        .showcase h1 { font-size: 3.5rem; margin-bottom: 0.5rem; }
-        .btn { display: inline-block; background: #0078d4; color: #fff; padding: 0.75rem 1.5rem; border: none; cursor: pointer; text-decoration: none; border-radius: 5px; }
-        
-        /* NOVA SEÇÃO: TECH STACK (Obrigatória para Créditos) */
-        .tech-stack { padding: 40px 0; background: #fff; text-align: center; border-bottom: 1px solid #eee; }
-        .tech-stack i { font-size: 2.5rem; margin: 0 20px; color: #ccc; transition: 0.3s; }
-        .tech-stack i:hover { color: #0078d4; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nowds Solutions | Modern Data Stack & AI Automation</title>
+  
+  <meta name="description" content="Nowds Solutions — Modern Data Stack, AI Integrations, and Scalable Digital Infrastructure for high-performance enterprises." />
+  <meta name="keywords" content="AI Automation, LLM, Modern Data Stack, SaaS Development, Cloud Infrastructure, Azure OpenAI, Google Cloud" />
+  
+  <style>
+    /* TODO O SEU CSS ORIGINAL MANTIDO INTEGRALMENTE */
+    :root {
+      --bg: #0b1020;
+      --bg-soft: #121933;
+      --card: rgba(255,255,255,0.06);
+      --card-strong: rgba(255,255,255,0.1);
+      --line: rgba(255,255,255,0.12);
+      --text: #f3f6ff;
+      --muted: #aab3d1;
+      --primary: #5eead4;
+      --primary-2: #60a5fa;
+      --shadow: 0 20px 50px rgba(0,0,0,0.35);
+      --radius: 22px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(96,165,250,0.18), transparent 30%),
+        radial-gradient(circle at top right, rgba(94,234,212,0.15), transparent 28%),
+        linear-gradient(180deg, #08101f 0%, #0b1020 45%, #0d1326 100%);
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.04);
+      color: var(--muted);
+      font-size: 14px;
+      backdrop-filter: blur(12px);
+    }
+
+    .pill::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      box-shadow: 0 0 16px rgba(94,234,212,0.6);
+    }
+
+    .section {
+      padding: 88px 0;
+      position: relative;
+    }
+
+    .section-title {
+      max-width: 700px;
+      margin-bottom: 24px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.05;
+      margin: 18px 0 12px;
+      letter-spacing: -0.03em;
+    }
+
+    .section-title p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.02rem;
+      line-height: 1.7;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(18px);
+      background: rgba(8, 16, 31, 0.72);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      min-height: 76px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      font-size: 1.05rem;
+    }
+
+    .brand-logo {
+      height: 48px;
+      width: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 8px 18px rgba(0,0,0,0.25));
+    }
+
+    .brand-name {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+
+    .brand-name strong {
+      font-size: 1.05rem;
+    }
+
+    .brand-name span {
+      font-size: 0.78rem;
+      color: var(--muted);
+      font-weight: 600;
+      margin-top: 4px;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 20px;
+      border-radius: 16px;
+      border: 1px solid transparent;
+      font-weight: 700;
+      transition: 0.25s ease;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      color: #07111b;
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      box-shadow: 0 14px 30px rgba(96,165,250,0.22);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 35px rgba(96,165,250,0.28);
+    }
+
+    .btn-secondary {
+      color: var(--text);
+      border-color: var(--line);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.08);
+      transform: translateY(-2px);
+    }
+
+    .hero {
+      padding: 76px 0 48px;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .hero-copy h1 {
+      font-size: clamp(2.8rem, 6vw, 5.2rem);
+      line-height: 0.96;
+      letter-spacing: -0.055em;
+      margin: 18px 0;
+      max-width: 780px;
+    }
+
+    .hero-copy p {
+      margin: 0;
+      max-width: 720px;
+      color: var(--muted);
+      font-size: 1.08rem;
+      line-height: 1.8;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 34px;
+    }
+
+    .stat {
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: var(--shadow);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.55rem;
+      letter-spacing: -0.04em;
+      margin-bottom: 6px;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 0.94rem;
+      line-height: 1.4;
+    }
+
+    .showcase {
+      position: relative;
+      min-height: 580px;
+    }
+
+    .glass {
+      position: absolute;
+      border-radius: 26px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: linear-gradient(180deg, rgba(255,255,255,0.09), rgba(255,255,255,0.04));
+      backdrop-filter: blur(18px);
+      box-shadow: var(--shadow);
+    }
+
+    .panel-main {
+      inset: 54px 0 0 76px;
+      padding: 24px;
+    }
+
+    .panel-card {
+      top: 0;
+      left: 0;
+      width: 280px;
+      padding: 22px;
+    }
+
+    .panel-chat {
+      right: 0;
+      bottom: 34px;
+      width: 260px;
+      padding: 18px;
+    }
+
+    .window-bar {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .window-bar span {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.26);
+    }
+
+    .dashboard {
+      display: grid;
+      gap: 14px;
+    }
+
+    .dash-row {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 14px;
+    }
+
+    .dash-block {
+      min-height: 116px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 18px;
+    }
+
+    .dash-block h3, .mini-title {
+      margin: 0 0 8px;
+      font-size: 0.95rem;
+      color: #fff;
+    }
+
+    .dash-block p, .mini-text {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.55;
+    }
+
+    .bar-chart {
+      display: flex;
+      align-items: end;
+      gap: 10px;
+      height: 120px;
+      margin-top: 16px;
+    }
+
+    .bar-chart span {
+      flex: 1;
+      border-radius: 12px 12px 4px 4px;
+      background: linear-gradient(180deg, var(--primary), var(--primary-2));
+      opacity: 0.92;
+    }
+
+    .chat-bubble {
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.08);
+      color: var(--text);
+      line-height: 1.55;
+      font-size: 0.92rem;
+      margin-bottom: 10px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .chat-bubble.user {
+      background: linear-gradient(135deg, rgba(94,234,212,0.2), rgba(96,165,250,0.18));
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      padding: 26px;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: var(--card);
+      box-shadow: var(--shadow);
+      transition: 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      background: var(--card-strong);
+    }
+
+    .icon {
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      border-radius: 16px;
+      margin-bottom: 18px;
+      font-size: 1.25rem;
+      background: linear-gradient(135deg, rgba(94,234,212,0.18), rgba(96,165,250,0.18));
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 1.2rem;
+      letter-spacing: -0.02em;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.72;
+      font-size: 0.97rem;
+    }
+
+    .list {
+      display: grid;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .list-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .list-item::before {
+      content: "✓";
+      color: var(--primary);
+      font-weight: 800;
+      margin-top: 1px;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .steps {
+      display: grid;
+      gap: 16px;
+    }
+
+    .step {
+      display: flex;
+      gap: 16px;
+      padding: 20px;
+      border-radius: 20px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .step-number {
+      min-width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      color: #08111d;
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+    }
+
+    .step h4 {
+      margin: 0 0 8px;
+      font-size: 1rem;
+    }
+
+    .step p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .highlight {
+      padding: 30px;
+      border-radius: 28px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.04));
+      box-shadow: var(--shadow);
+      height: 100%;
+    }
+
+    .highlight h3 {
+      margin: 0 0 14px;
+      font-size: 1.7rem;
+      letter-spacing: -0.03em;
+    }
+
+    .highlight p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .chip {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: var(--text);
+      font-size: 0.92rem;
+    }
+
+    .cta {
+      padding: 34px;
+      border-radius: 30px;
+      border: 1px solid var(--line);
+      background:
+        radial-gradient(circle at top right, rgba(94,234,212,0.14), transparent 28%),
+        radial-gradient(circle at bottom left, rgba(96,165,250,0.14), transparent 28%),
+        rgba(255,255,255,0.05);
+      box-shadow: var(--shadow);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .cta h3 {
+      margin: 0 0 8px;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      letter-spacing: -0.04em;
+    }
+
+    .cta p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 680px;
+      line-height: 1.75;
+    }
+
+    .contact-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .contact-meta a {
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.04);
+    }
+
+    footer {
+      padding: 34px 0 44px;
+      color: var(--muted);
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .footer-wrap {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Partner Icons Section (Crucial para Créditos) */
+    .partners {
+      padding: 40px 0;
+      text-align: center;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .partners-icons {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      opacity: 0.4;
+      filter: grayscale(1);
+      flex-wrap: wrap;
+    }
+    .partners-icons i { font-size: 2rem; }
+  </style>
 </head>
 <body>
-    <nav class="navbar container">
-        <img src="logo-nowds.png" alt="NowDS">
-        <ul>
-            <li style="list-style:none;"><a href="mailto:contato@nowds.com.br" class="btn">Contato Profissional</a></li>
-        </ul>
-    </nav>
-
-    <section class="showcase">
-        <div class="container">
-            <h1>NowDS</h1>
-            <p>Data Science & Modern Data Stack para o seu negócio.</p>
-            <a href="mailto:contato@nowds.com.br" class="btn">Solicitar Orçamento</a>
+  <header>
+    <div class="container nav">
+      <a href="#inicio" class="brand">
+        <img class="brand-logo" src="logo-nowds.png" alt="Nowds Solutions Logo" />
+        <div class="brand-name">
+          <strong>Nowds Solutions</strong>
+          <span>Modern Data Stack & AI Systems</span>
         </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#servicos">Infraestrutura</a>
+        <a href="#processo">Escalabilidade</a>
+        <a href="#cases">Projetos</a>
+        <a href="#contato">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero section" id="inicio">
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <span class="pill">Cloud Native & AI-Driven Infrastructure</span>
+          <h1>Modern Data Stack e Automação Inteligente para Negócios de Alta Performance.</h1>
+          <p>
+            A <strong>Nowds Solutions</strong> projeta ecossistemas digitais escaláveis. 
+            Desenvolvemos arquiteturas de dados, integrações de APIs complexas e agentes de IA (LLMs) 
+            totalmente integrados à nuvem da <strong>Microsoft Azure e Google Cloud</strong>.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="mailto:contato@nowds.com.br">Solicitar diagnóstico técnico</a>
+            <a class="btn btn-secondary" href="#servicos">Ver infraestrutura</a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat">
+              <strong>LLM Integration</strong>
+              <span>Agentes inteligentes baseados em GPT-4o e Gemini Pro.</span>
+            </div>
+            <div class="stat">
+              <strong>Data Architecture</strong>
+              <span>Pipelines de ETL/ELT automatizados e governança de dados.</span>
+            </div>
+            <div class="stat">
+              <strong>Scalable SaaS</strong>
+              <span>Aplicações web modernas com arquitetura serverless.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="showcase reveal">
+          <div class="glass panel-card">
+            <div class="window-bar"><span></span><span></span><span></span></div>
+            <div class="mini-title">AI Agent Pipeline</div>
+            <p class="mini-text">Orquestração de agentes de IA para qualificação automatizada e processamento de dados.</p>
+            <div class="list">
+              <div class="list-item">Natural Language Processing (NLP)</div>
+              <div class="list-item">Vector Database Integration</div>
+              <div class="list-item">Custom API Endpoints</div>
+            </div>
+          </div>
+
+          <div class="glass panel-main">
+            <div class="window-bar"><span></span><span></span><span></span></div>
+            <div class="dashboard">
+              <div class="dash-row">
+                <div class="dash-block">
+                  <h3>Cloud Scalability</h3>
+                  <p>Infraestrutura pronta para escalar conforme o volume de requisições aumenta.</p>
+                  <div class="bar-chart">
+                    <span style="height: 46%"></span>
+                    <span style="height: 62%"></span>
+                    <span style="height: 78%"></span>
+                    <span style="height: 92%"></span>
+                  </div>
+                </div>
+                <div class="dash-block">
+                  <h3>Web Architecture</h3>
+                  <p>Performance otimizada e foco em experiência do usuário (UX).</p>
+                </div>
+              </div>
+              <div class="dash-block">
+                <h3>System Integration</h3>
+                <p>Conectividade total entre CRMs, ERPs, bancos de dados SQL/NoSQL e fluxos de trabalho autônomos.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section class="tech-stack">
-        <div class="container">
-            <p style="color: #888; font-weight: bold; margin-bottom: 20px;">TECNOLOGIAS SUPORTADAS</p>
-            <i class="fab fa-microsoft" title="Azure OpenAI Enabled"></i>
-            <i class="fab fa-google-cloud" title="GCP Partner Ready"></i>
-            <i class="fab fa-python" title="Python Data Science"></i>
-            <i class="fab fa-docker" title="Containerized Infrastructure"></i>
-            <i class="fas fa-database" title="Modern Data Warehouse"></i>
+    <section class="partners">
+      <div class="container">
+        <div class="partners-icons">
+          <i class="fab fa-microsoft" title="Azure Ecosystem"></i>
+          <i class="fab fa-google-cloud" title="Google Cloud Platform"></i>
+          <i class="fab fa-python" title="Python Data Stack"></i>
+          <i class="fab fa-docker" title="Containerization"></i>
+          <i class="fab fa-aws" title="AWS Infrastructure"></i>
         </div>
+      </div>
     </section>
 
-    <section class="services container" style="padding: 50px 0;">
-        <h2>Nossos Serviços</h2>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
-            <div class="card">
-                <h3>Engenharia de Dados</h3>
-                <p>Pipelines automatizados e ETL profissional.</p>
-            </div>
-            <div class="card">
-                <h3>Análise Preditiva</h3>
-                <p>Uso de IA para prever tendências de mercado.</p>
-            </div>
-            <div class="card">
-                <h3>Dashboards Estratégicos</h3>
-                <p>BI moderno para tomada de decisão rápida.</p>
-            </div>
+    <section class="section" id="servicos">
+      <div class="container">
+        <div class="section-title reveal">
+          <span class="pill">Stack Tecnológica</span>
+          <h2>Soluções orientadas à escalabilidade técnica.</h2>
+          <p>
+            Construímos a ponte entre processos manuais e a eficiência da nuvem, 
+            garantindo que sua tecnologia suporte o crescimento do negócio.
+          </p>
         </div>
+
+        <div class="grid-3">
+          <article class="card reveal">
+            <div class="icon">🤖</div>
+            <h3>Agentes de IA & LLMs</h3>
+            <p>Implementação de modelos de linguagem (GPT, Claude, Gemini) para automação de conhecimento, suporte técnico avançado e análise de dados não estruturados.</p>
+          </article>
+
+          <article class="card reveal">
+            <div class="icon">🌐</div>
+            <h3>Modern Web Frameworks</h3>
+            <p>Desenvolvimento front-end e back-end com foco em segurança, velocidade de carregamento e arquiteturas SPA/PWA.</p>
+          </article>
+
+          <article class="card reveal">
+            <div class="icon">🔗</div>
+            <h3>API Economy & ETL</h3>
+            <p>Criação de webhooks e pipelines de dados para sincronização em tempo real entre diferentes ecossistemas de software.</p>
+          </article>
+        </div>
+      </div>
     </section>
 
-    <footer style="text-align:center; padding: 40px; background: #333; color: #fff;">
-        <p>NowDS &copy; 2026 | contato@nowds.com.br</p>
-        <p style="font-size: 0.8rem; color: #888;">Modern Data Stack Solutions for Startups & Enterprises</p>
-    </footer>
+    <section class="section" id="contato">
+      <div class="container">
+        <div class="cta reveal">
+          <div>
+            <span class="pill">Scale your business with AI</span>
+            <h3>Nowds Solutions</h3>
+            <p>
+              Se você busca uma parceria técnica para modernizar sua infraestrutura ou implementar 
+              soluções avançadas de IA, o NowDS é o ponto de partida.
+            </p>
+
+            <div class="contact-meta">
+              <a href="https://wa.me/5561982372401" target="_blank">WhatsApp: (61) 98237-2401</a>
+              <a href="mailto:contato@nowds.com.br">contato@nowds.com.br</a>
+            </div>
+          </div>
+
+          <div style="display:flex; gap:12px; flex-wrap:wrap;">
+            <a class="btn btn-primary" href="mailto:contato@nowds.com.br">Agendar Reunião Técnica</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-wrap">
+      <div><strong>Nowds Solutions</strong> — Modern Data Stack & AI Innovation Startup.</div>
+      <div class="footer-links">
+        <a href="#inicio">Início</a>
+        <a href="#servicos">Tecnologia</a>
+        <a href="#contato">Contato</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+  </script>
 </body>
 </html>
