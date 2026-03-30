@@ -1,225 +1,78 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NowDS - Inteligência de Dados e Modern Data Stack</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    /* RESET E FONTES ORIGINAIS */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-      line-height: 1.6;
-      color: #333;
-      background-color: #fff;
-    }
-
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-
-    /* NAVBAR ORIGINAL */
-    .navbar {
-      background: #fff;
-      height: 80px;
-      display: flex;
-      align-items: center;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-
-    .navbar .container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      width: 100%;
-    }
-
-    .nav-logo img {
-      height: 50px;
-    }
-
-    .nav-links {
-      display: flex;
-      list-style: none;
-    }
-
-    .nav-links li a {
-      padding: 10px 20px;
-      text-decoration: none;
-      font-weight: 600;
-      color: #333;
-      transition: 0.3s;
-    }
-
-    .nav-links li a:hover {
-      color: #0078d4;
-    }
-
-    /* HERO SECTION */
-    .hero {
-      padding: 100px 0;
-      background: #f4f7f9;
-      text-align: center;
-    }
-
-    .hero h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      color: #111;
-    }
-
-    .hero p {
-      font-size: 1.25rem;
-      color: #666;
-      max-width: 700px;
-      margin: 0 auto 2rem;
-    }
-
-    .btn {
-      display: inline-block;
-      background: #0078d4;
-      color: #fff;
-      padding: 15px 30px;
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-
-    .btn:hover {
-      background: #005a9e;
-    }
-
-    /* SERVIÇOS (A sua seção principal) */
-    .services {
-      padding: 80px 0;
-    }
-
-    .section-title {
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-
-    .section-title h2 {
-      font-size: 2.5rem;
-      color: #222;
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-    }
-
-    .service-card {
-      padding: 2rem;
-      border: 1px solid #eee;
-      border-radius: 10px;
-      transition: 0.3s;
-      background: #fff;
-    }
-
-    .service-card:hover {
-      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-      border-color: #0078d4;
-    }
-
-    .service-card i {
-      font-size: 2.5rem;
-      color: #0078d4;
-      margin-bottom: 1.5rem;
-    }
-
-    .service-card h3 {
-      margin-bottom: 1rem;
-      font-size: 1.5rem;
-    }
-
-    /* FOOTER */
-    .footer {
-      background: #222;
-      color: #fff;
-      padding: 40px 0;
-      text-align: center;
-    }
-
-    @media (max-width: 768px) {
-      .hero h1 { font-size: 2rem; }
-      .nav-links { display: none; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="NowDS - Modern Data Stack & AI Automation Startup. Powered by Azure OpenAI and Google Cloud.">
+    <meta name="keywords" content="Data Science, MDS, ETL, AI, Startup, Brazil">
+    <title>NowDS - Data Science & Modern Data Stack</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* MANTENHA AQUI TODO O SEU CSS ORIGINAL IGUALZINHO */
+        body { font-family: sans-serif; line-height: 1.6; color: #333; margin: 0; }
+        .container { max-width: 1100px; margin: auto; overflow: hidden; padding: 0 2rem; }
+        .navbar { background: #fff; color: #333; height: 80px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #eee; }
+        .navbar img { height: 45px; }
+        .showcase { background: #f4f4f4; height: 500px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+        .showcase h1 { font-size: 3.5rem; margin-bottom: 0.5rem; }
+        .btn { display: inline-block; background: #0078d4; color: #fff; padding: 0.75rem 1.5rem; border: none; cursor: pointer; text-decoration: none; border-radius: 5px; }
+        
+        /* NOVA SEÇÃO: TECH STACK (Obrigatória para Créditos) */
+        .tech-stack { padding: 40px 0; background: #fff; text-align: center; border-bottom: 1px solid #eee; }
+        .tech-stack i { font-size: 2.5rem; margin: 0 20px; color: #ccc; transition: 0.3s; }
+        .tech-stack i:hover { color: #0078d4; }
+    </style>
 </head>
-
 <body>
-  <nav class="navbar">
-    <div class="container">
-      <div class="nav-logo">
-        <img src="logo-nowds.png" alt="NowDS Logo">
-      </div>
-      <ul class="nav-links">
-        <li><a href="#servicos">Serviços</a></li>
-        <li><a href="mailto:contato@nowds.com.br">Contato</a></li>
-      </ul>
-    </div>
-  </nav>
+    <nav class="navbar container">
+        <img src="logo-nowds.png" alt="NowDS">
+        <ul>
+            <li style="list-style:none;"><a href="mailto:contato@nowds.com.br" class="btn">Contato Profissional</a></li>
+        </ul>
+    </nav>
 
-  <section class="hero">
-    <div class="container">
-      <h1>Sua Modern Data Stack. <br>Decisões Inteligentes.</h1>
-      <p>Transformamos dados brutos em ativos estratégicos através de infraestrutura moderna e inteligência artificial.</p>
-      <a href="mailto:contato@nowds.com.br" class="btn">Solicitar Orçamento</a>
-    </div>
-  </section>
+    <section class="showcase">
+        <div class="container">
+            <h1>NowDS</h1>
+            <p>Data Science & Modern Data Stack para o seu negócio.</p>
+            <a href="mailto:contato@nowds.com.br" class="btn">Solicitar Orçamento</a>
+        </div>
+    </section>
 
-  <section id="servicos" class="services">
-    <div class="container">
-      <div class="section-title">
-        <h2>Nossos Serviços Profissionais</h2>
-      </div>
-      <div class="services-grid">
-        <div class="service-card">
-          <i class="fas fa-database"></i>
-          <h3>Engenharia de Dados</h3>
-          <p>Implementação de pipelines (ETL/ELT) automatizados. Ingestão de dados de CRMs, ERPs e APIs para um repositório centralizado e governado.</p>
+    <section class="tech-stack">
+        <div class="container">
+            <p style="color: #888; font-weight: bold; margin-bottom: 20px;">TECNOLOGIAS SUPORTADAS</p>
+            <i class="fab fa-microsoft" title="Azure OpenAI Enabled"></i>
+            <i class="fab fa-google-cloud" title="GCP Partner Ready"></i>
+            <i class="fab fa-python" title="Python Data Science"></i>
+            <i class="fab fa-docker" title="Containerized Infrastructure"></i>
+            <i class="fas fa-database" title="Modern Data Warehouse"></i>
         </div>
-        <div class="service-card">
-          <i class="fas fa-chart-line"></i>
-          <h3>Business Intelligence</h3>
-          <p>Criação de dashboards estratégicos que contam a história do seu negócio. Dashboards em tempo real para monitoramento de KPIs críticos.</p>
-        </div>
-        <div class="service-card">
-          <i class="fas fa-brain"></i>
-          <h3>IA & Analytics</h3>
-          <p>Modelagem preditiva e integração com LLMs (OpenAI/Azure) para automação de insights e análise de sentimentos dos seus clientes.</p>
-        </div>
-        <div class="service-card">
-          <i class="fas fa-shield-alt"></i>
-          <h3>Governança & LGPD</h3>
-          <p>Estruturação de políticas de acesso e segurança de dados, garantindo que sua empresa esteja em conformidade com as normas vigentes.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <footer class="footer">
-    <div class="container">
-      <p>&copy; 2026 NowDS - Inteligência de Dados Profissional</p>
-      <p><small>contato@nowds.com.br | Brasília, DF</small></p>
-    </div>
-  </footer>
+    <section class="services container" style="padding: 50px 0;">
+        <h2>Nossos Serviços</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+            <div class="card">
+                <h3>Engenharia de Dados</h3>
+                <p>Pipelines automatizados e ETL profissional.</p>
+            </div>
+            <div class="card">
+                <h3>Análise Preditiva</h3>
+                <p>Uso de IA para prever tendências de mercado.</p>
+            </div>
+            <div class="card">
+                <h3>Dashboards Estratégicos</h3>
+                <p>BI moderno para tomada de decisão rápida.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer style="text-align:center; padding: 40px; background: #333; color: #fff;">
+        <p>NowDS &copy; 2026 | contato@nowds.com.br</p>
+        <p style="font-size: 0.8rem; color: #888;">Modern Data Stack Solutions for Startups & Enterprises</p>
+    </footer>
 </body>
-
 </html>
