@@ -618,12 +618,13 @@ header {
 
 .case-card img {
   max-width: 250px;
-  filter: brightness(0) invert(1) opacity(0.85); /* Converts dark logo to white */
-  transition: filter 0.3s ease;
+  opacity: 0.85;
+  transition: all 0.3s ease;
 }
 
 .case-card:hover img {
-  filter: brightness(0) invert(1) opacity(1);
+  opacity: 1;
+  transform: scale(1.03);
 }
 
 /* CTA Section */
