@@ -131,6 +131,7 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: -0.02em;
   background: linear-gradient(to right, #fff, var(--text-dark));
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -314,6 +315,7 @@ header {
   margin: 0 0 24px;
   background: linear-gradient(180deg, #FFFFFF 0%, #B4C6E5 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -346,6 +348,7 @@ header {
   font-size: 1.8rem;
   background: linear-gradient(90deg, var(--primary), var(--secondary));
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 8px;
 }
@@ -663,6 +666,7 @@ header {
   line-height: 1.1;
   background: linear-gradient(90deg, #fff, var(--text-dark));
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -803,4 +807,54 @@ footer {
   .contact-meta {
     justify-content: center;
   }
+}
+/* Scroll to Top Button */
+#scroll-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: var(--bg-deep);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  box-shadow: 0 10px 20px rgba(0, 242, 254, 0.3);
+}
+
+#scroll-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+#scroll-to-top:hover {
+  transform: scale(1.1) translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 242, 254, 0.5);
+}
+
+/* FAQ Details Reset */
+details summary::-webkit-details-marker {
+  display: none;
+}
+details summary {
+  outline: none;
+}
+details[open] summary {
+  border-radius: 12px 12px 0 0 !important;
+  border-bottom-color: transparent !important;
+}
+details[open] summary i {
+  transform: rotate(180deg);
+}
+details summary i {
+  transition: transform 0.3s ease;
 }
