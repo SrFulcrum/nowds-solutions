@@ -366,9 +366,13 @@
         });
 
         if (response.ok) {
+          const successMsg = document.getElementById('success-message');
           form.style.display = 'none';
-          document.getElementById('success-message').style.display = 'block';
-          window.scrollTo({ top: form.offsetTop - 100, behavior: 'smooth' });
+          successMsg.style.display = 'block';
+          
+          // Scroll suave para a mensagem de sucesso
+          const targetY = successMsg.getBoundingClientRect().top + window.pageYOffset - 100;
+          window.scrollTo({ top: targetY, behavior: 'smooth' });
         } else {
           throw new Error('Erro na resposta do N8N');
         }
