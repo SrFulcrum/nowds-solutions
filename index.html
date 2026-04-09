@@ -365,21 +365,28 @@
           body: JSON.stringify(data)
         });
 
-        if (response.ok) {
+        let result = null;
+        try {
+          result = await response.json();
+        } catch (e) {
+          result = null;
+        }
+
+        if (response.ok && result?.whatsapp_sent === true) {
           const successMsg = document.getElementById('success-message');
           form.style.display = 'none';
           successMsg.style.display = 'block';
-          
+
           // Scroll suave para a mensagem de sucesso
           const targetY = successMsg.getBoundingClientRect().top + window.pageYOffset - 100;
           window.scrollTo({ top: targetY, behavior: 'smooth' });
         } else {
-          throw new Error('Erro na resposta do N8N');
+          throw new Error(result?.message || 'Não foi possível iniciar a conversa no WhatsApp agora.');
         }
       } catch (err) {
         feedback.style.display = 'block';
         feedback.style.color = '#ef4444';
-        feedback.innerText = 'Houve um problema de conexão. Por favor, conte-nos pelo WhatsApp!';
+        feedback.innerText = err?.message || 'Houve um problema de conexão. Por favor, conte-nos pelo WhatsApp!';
       } finally {
         btn.innerText = 'Solicitar Contato do Especialista';
         btn.disabled = false;
